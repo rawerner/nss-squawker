@@ -1,3 +1,5 @@
+@wip
+
 And("show me the page") do
   save_and_open_page
 end
@@ -33,3 +35,13 @@ end
 When(/^I fill in "(.*?)" with "(.*?)"$/) do |field, content|
   fill_in(field, with: content)
 end
+
+
+When (/^I upload a file "(.*?)"$/) do |image|
+  attach_file("squeek_image", File.join(Rails.root, "/features/support/files/cat.png"))
+end
+
+When (/^I upload a file with invalid extension$/) do
+  attach_file(:image_url, '../support/files/cat.txt')
+end
+
