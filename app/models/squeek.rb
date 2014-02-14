@@ -3,6 +3,5 @@ class Squeek < ActiveRecord::Base
   validates_presence_of :user
   mount_uploader :image, ImageUploader
 
-  mount_uploader :image, ImageUploader
   belongs_to :user
 end

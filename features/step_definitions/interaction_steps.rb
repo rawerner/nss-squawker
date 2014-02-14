@@ -45,8 +45,8 @@ When(/^I fill in "(.*?)" with "(.*?)"$/) do |field, content|
   fill_in(field, with: content)
 end
 
-When (/^I upload a file "(.*?)"$/) do |image|
-  attach_file("squeek_image", File.join(Rails.root, '/features/support/files/cat.png'))
+When (/^I upload a file "(.*?)"$/) do |filename|
+  attach_file("squeek_image", File.join(Rails.root, "/features/support/files/#{filename}"))
 end
 
 When (/^I upload a file with an invalid extension$/) do
