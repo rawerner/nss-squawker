@@ -15,14 +15,16 @@ Then(/^I should see "(.*?)" within the squeeks feed$/) do |text|
   end
 end
 
-Then(/^there should be an image "(.*?)" in the database$/) do |path|
-  image_count = Squeek.where(image: path).count
-  # Equivalent to: assert_equal 1, image_count
+Given(/^I have (\d+) squeek$/) do |num|
+  step %{that user has #{num} squeeks}
+end
+
+Then(/^there should be an image "(.*?)" in the database$/) do |string|
+  image_count = Squeek.where(image: string).count
   image_count.should == 1
 end
 
-Then(/^I should see the image "(.*?)" within the squeeks feed$/) do |text|
+Then(/^I should see the image "(.*?)" within the squeeks feed$/) do |image|
   page.should have_xpath("//img[contains(@src, 'cat.png')]")
 end
-
 

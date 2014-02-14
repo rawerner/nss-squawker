@@ -14,7 +14,6 @@ Feature: Upload Image to Squeek
     And there should be an image "cat.png" in the database
     And I should see the image "cat.png" within the squeeks feed
 
-
   Scenario: Uploading a file without .jpeg or .png extensions fails
     Given I'm signed in as "rachel"
     When I go to the homepage

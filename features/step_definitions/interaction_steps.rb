@@ -12,6 +12,15 @@ When(/^I go to the homepage$/) do
   visit root_path
 end
 
+Then(/^I should be on my profile page$/) do
+  current_path.should == user_path(@user)
+end
+
+Then(/^I should be on jane's profile page$/) do
+  user = User.where(username: "jane").first
+  current_path.should == user_path(user)
+end
+
 When(/^I (?:click|follow) "(.*?)"$/) do |link|
   click_link(link)
 end
@@ -36,12 +45,11 @@ When(/^I fill in "(.*?)" with "(.*?)"$/) do |field, content|
   fill_in(field, with: content)
 end
 
-
 When (/^I upload a file "(.*?)"$/) do |image|
-  attach_file("squeek_image", File.join(Rails.root, "/features/support/files/cat.png"))
+  attach_file("squeek_image", File.join(Rails.root, '/features/support/files/cat.png'))
 end
 
-When (/^I upload a file with invalid extension$/) do
+When (/^I upload a file with an invalid extension$/) do
   attach_file(:image_url, '../support/files/cat.txt')
 end
 
